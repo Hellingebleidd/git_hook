@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Commit message pattern
+regex_parkdots='^(\[)?PARKDOTS-[0-9]{3,4}(\])? .+$'
+regex_parkdots_customer='^PA_[0-9]{4}_PD_CUST-[0-9]+$ .+$'
+# error_msg="Commit message must follow pattern: 'PA_{year}_PD_CUST-{number} description' or pattern: 'PARKDOTS-{jira number} description'. "
+error_msg2="Commit message must contain the name of the Jira task and commit description"
+
+
+commit_msg=$(cat "$1")
+
+if ! echo "$commit_msg" | grep -Eq "$regex_parkdots" && ! echo "$commit_msg" | grep -Eq "$regex_parkdots_customer"; then
+  echo "$error_msg2"
+  exit 1
+fi
