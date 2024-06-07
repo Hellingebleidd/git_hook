@@ -1,5 +1,6 @@
 # GitHookProject
 ## AFTER CLONNING this project
+
 in bash terminal run  `./setup-git-hooks.sh`
 
 
